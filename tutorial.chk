@@ -1,0 +1,6 @@
+SinOsc s => dac;
+// allow 2 seconds to pass
+while( true ) {
+    100::ms => now;
+    Std.rand2f(111.0, 240.0) => s.freq;
+}
