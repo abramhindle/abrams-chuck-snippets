@@ -7,7 +7,8 @@ Step s => BiQuad f => dac;
 // initialize float variable
 0.0 => float v;
 0.0 => float step;
-
+0.1 => s.gain ;
+0.1 => f.gain ;
 
 
 // infinite time-loop

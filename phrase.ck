@@ -18,7 +18,7 @@ Math.random2f(40,220) => float minfreq;
      "xxx" , "hee" , "hoo",  "hah", 
      "bbb" , "ddd" , "jjj",  "ggg", 
      "vvv" , "zzz" , "thz",  "zhh" ] @=> string allphones[];
-Math.random2(1,3) => int n;
+Math.random2(1,7) => int n;
 string phones[n];
 
 for ( 0=>int i; i < n ; i+1 => i) {
