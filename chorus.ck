@@ -13,7 +13,7 @@ for (0 => int i; i < n; i + 1 => i) {
 
 
 Math.random2f(0.1,0.4) => r.mix;
-Math.random2f(80,220) => float minfreq;
+Math.random2f(40,420) => float minfreq;
 Math.random2(10,100) => int t;
 while (t > 0) {
     t - 1 => t;

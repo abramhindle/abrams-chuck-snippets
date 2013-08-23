@@ -3,7 +3,7 @@ HevyMetl hm => Envelope e => dac;
 //0 => s.next;
 hm.noteOn;
 0.25 => hm.gain;
-220 => hm.freq;
+666 => hm.freq;
 60 => hm.lfoSpeed;
 0.5 => hm.lfoDepth;
 Std.rand2f(40,80) => float base;

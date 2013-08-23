@@ -2,13 +2,12 @@ VoicForm voc => JCRev r => dac;
 0.5 => voc.gain;
 0.8 => r.gain;
 Math.random2f(0.1,0.4) => r.mix;
-Math.random2f(20,220) => float minfreq;
+Math.random2f(80,440) => float minfreq;
 Math.random2( 1, 128 ) => voc.phonemeNum;
 Math.random2(10,100) => int n;
 while (n > 0) {
     n - 1 => n;
     Math.random2f( 0.6, 0.8 ) => voc.noteOn;
-
     Math.random2f( 0.9, 1.0 ) => voc.voiced;
     Math.random2f( 0.0, 1.0 ) => voc.unVoiced;
     Math.random2f( minfreq, minfreq*1.05  ) => voc.freq;

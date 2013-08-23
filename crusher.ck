@@ -27,8 +27,8 @@ while( true ) {
         t*(t16*t20>>13 + 666&(t*t>>15)|(t>>b1)|(t>>b2))+t+x=>x;
     }
     if (Math.random2f(0,1.0) > 0.99999) {
-        Math.random2(2,10) => b1;
-        Math.random2(2,10) => b2;
+        Math.random2(2,3) => b1;
+        Math.random2(2,3) => b2;
         Math.random2(1,2) => choice;
     }
     //(t^(t%13+1))*(t16*t16>>7 ^ 257&(t*t>>9)|(t16>>6)|(t>>9))*t & 31 + (x-4)&31=>x;

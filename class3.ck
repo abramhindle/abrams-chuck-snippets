@@ -135,7 +135,7 @@ Math.random2f(-10000,10000) => float by;
 Math.random2f(-10000,10000) => float bzz;
 Math.random2f(10,2000) => float fb;
 <<< n, mystep, r, fb, bx, by, bzz >>>;
-1 => r;
+Math.random2(1,4) => r;
 
 for (0=>int i; i < n; i + 1 => i) {
     // factory method :/
