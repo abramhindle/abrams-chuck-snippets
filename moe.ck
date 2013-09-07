@@ -24,5 +24,5 @@ while( true )
     // increment v
     v + .1 => v;
     // advance time
-    100::samp => now;
+    Std.rand2(100,1000)::samp => now;
 }
