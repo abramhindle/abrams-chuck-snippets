@@ -30,3 +30,4 @@ while (t > 0) {
     Math.random2f(100,1500)::ms => now;
         
 }
+Machine.add("chorus.ck");

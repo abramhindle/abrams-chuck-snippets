@@ -8,7 +8,7 @@ PulseOsc r => NRev rr => dac.right;
 Math.random2(1,10) => float diff;
 20 * Math.random2(1,50) => float base;
 Math.random2f(0.01,9)  => float step;
-Math.random2(10,1000) => int t;
+Math.random2(10,30) => int t;
 <<<t>>>;
 while (t > 0) {
     t - 1 => t;
@@ -23,3 +23,4 @@ while (t > 0) {
     Std.rand2f(100,600)::ms => now;
 }
 <<<"done">>>;
+Machine.add("flutter.ck");
