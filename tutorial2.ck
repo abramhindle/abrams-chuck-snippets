@@ -2,7 +2,7 @@
 //.99 => f.prad;
 // 1 => f.eqzs;
 0.0 => float v;
-100 => int n;
+25 => int n;
 Impulse is[n];
 BiQuad bs[n];
 Envelope e[n];
@@ -28,12 +28,12 @@ while( true )
     v + .1 => v;
     // set the current sample/impulse
     for(0 => int j; j<n; j++) {
-        if (Std.rand2f(0,1) > 0.99) {
+        if (Std.rand2f(0,1) > 0.25) {
             Std.rand2f(0.01,1.0)::ms=>now;
             30::ms => e[j].duration;
             e[j].keyOn();
             1.0 => is[j].next;
-            Std.fabs(Math.sin(v)) * Std.rand2f(220,420.0) => bs[j].pfreq;
+            Std.fabs(Math.sin(v)) * Std.rand2f(80,420.0) => bs[j].pfreq;
             Std.rand2f(0.999,0.999999) => bs[j].prad;
         } else {
             if (Std.rand2f(0,1) > 0.9) {
@@ -49,7 +49,7 @@ while( true )
     // advance time
 
     //1000*(Std.rand2f(0,3)/Math.exp(3))::ms => now;
-    Std.rand2f(10,1000)::ms=>now;
+    Std.rand2f(100,1000)::ms=>now;
     //Std.rand2f(333,334)::ms=>now;
 }
 for(0 => int i; i<5; i++) {

@@ -11,7 +11,7 @@ class AbsBuzzer {
     PRCRev p;
     ADSR e;
     0.1 => float stepsize;
-    440 => float freqbase;
+    80 => float freqbase;
     0 => float x;
     0 => float y;
     0 => float z;
@@ -135,7 +135,7 @@ Math.random2f(-10000,10000) => float by;
 Math.random2f(-10000,10000) => float bzz;
 Math.random2f(10,2000) => float fb;
 <<< n, mystep, r, fb, bx, by, bzz >>>;
-1 => r;
+Math.random2(1,4) => r;
 
 for (0=>int i; i < n; i + 1 => i) {
     // factory method :/
@@ -167,7 +167,9 @@ for (0=>int i; i < n; i + 1 => i) {
 for (0 => int i; i < n ; 1 + i => i) {
     spork ~ bz[i].buzz();
 }
-while(true) {
+Math.random2(5,120) => int t;
+while(t > 0) {
+    t - 1 => t;
     1000::ms => now;
 }
 
