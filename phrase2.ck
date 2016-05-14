@@ -7,9 +7,12 @@ Math.random2f(0.1,0.4) => r.mix;
 2 * Math.random2( 0,2 ) => int bphon;
 bphon => voc.phonemeNum;
 
-Math.random2f(20,200) => float minfreq;
+Math.random2f(2,40) => float center;
+Math.random2f(0.9 * center * 20 , 1.1* center * 20) => float minfreq;
+
+
 <<<minfreq>>>;
-//["eee","ahh","uuu","ooo"] @=> string phones[];
+//["eee","ahh","uuu","ooo"] @=> string allphones[];
 //["sss","xxx","zhh","ooo","eee","aaa","ddd"] @=> string phones[];
 [    "eee" , "ihh" , "ehh",  "aaa", 
      "ahh" , "aww" , "ohh",  "uhh", 
@@ -19,6 +22,13 @@ Math.random2f(20,200) => float minfreq;
      "xxx" , "hee" , "hoo",  "hah", 
      "bbb" , "ddd" , "jjj",  "ggg", 
      "vvv" , "zzz" , "thz",  "zhh" ] @=> string allphones[];
+
+// [ 
+//       "thh",
+//       "xxx" , "hee" ,
+//       "vvv" , "zzz" , "thz",  "zhh" ] @=> string allphones[];
+//  
+
 Math.random2(1,20) => int n;
 //5 => int n;
 string phones[n];
@@ -31,7 +41,7 @@ while( m > 0) {
     //m - 1 => m; //inf loop!
 for ( 0=>int i; i < n ; i+1 => i) {
     allphones[Math.random2(0,allphones.cap()-1)] => phones[i];
-    Math.random2f(50,105) => waits[i];
+    Math.random2f(50,1005) => waits[i];
     <<< phones[i] >>>;
 }
 //["sss","eee","xxx"] @=> string phones[];

@@ -1,5 +1,5 @@
 JCRev r => dac;
-Math.random2(2,5) => int n;
+Math.random2(2,10) => int n;
 Math.random2( 1, 128 ) => int phonemeNum;
 
 VoicForm voc[n];
@@ -13,7 +13,7 @@ for (0 => int i; i < n; i + 1 => i) {
 
 
 Math.random2f(0.1,0.4) => r.mix;
-Math.random2f(40,420) => float minfreq;
+Math.random2f(20,40) => float minfreq;
 Math.random2(10,100) => int t;
 while (t > 0) {
     t - 1 => t;
