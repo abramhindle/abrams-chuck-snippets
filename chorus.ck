@@ -13,8 +13,12 @@ for (0 => int i; i < n; i + 1 => i) {
 
 
 Math.random2f(0.1,0.4) => r.mix;
-Math.random2f(1140,2280) => float minfreq;
-Math.random2(10,100) => int t;
+//Math.random2(1,4)*20.0 => float minfreq;
+//Math.random2f(30.0,80.0) => float minfreq;
+Math.random2f(20.0,30.0) => float minfreq;
+//Math.random2(10,120) => int t;
+600 => int t;
+
 <<<minfreq>>>;
 <<<t>>>;
 while (t > 0) {
