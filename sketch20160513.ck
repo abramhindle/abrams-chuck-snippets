@@ -78,19 +78,73 @@ OscRecv orec;
 //Tell the OscRecv object to start listening for OSC messages on that port:
 orec.listen();
 
-orec.event("/mixer/fourch, f, f, f, f") @=> OscEvent fourchEvent;
 
-while ( true ) {
-    <<< "waiting" >>>;
-    fourchEvent => now; //wait for events to arrive.
-    while( fourchEvent.nextMsg() != 0 ) {
-        fourchEvent.getFloat() => float f1;
-        fourchEvent.getFloat() => float f2;
-        fourchEvent.getFloat() => float f3;
-        fourchEvent.getFloat() => float f4;
-        <<< (f1,f2,f3,f4) >>>;
-        1.0 + 0.1*(f3-64)/64 => s1m;
-        1.0 + 0.1*(f4-64)/64 => s3m;
-        spork ~ simpledrone(f1 $ int, (f2*500) $ int);
+function void fourch(OscEvent fourchEvent) {
+    while ( true ) {
+        <<< "waiting" >>>;
+        fourchEvent => now; //wait for events to arrive.
+        while( fourchEvent.nextMsg() != 0 ) {
+            fourchEvent.getFloat() => float f1;
+            fourchEvent.getFloat() => float f2;
+            fourchEvent.getFloat() => float f3;
+            fourchEvent.getFloat() => float f4;
+            <<< (f1,f2,f3,f4) >>>;
+            1.0 + 0.25*(f3-64)/64 => s1m;
+            1.0 + 0.25*(f4-64)/64 => s3m;
+            spork ~ simpledrone(f1 $ int, (f2*500) $ int);
+        }
     }
 }
+
+
+function void multiPitchLength(OscEvent multiEvent) {
+    while ( true ) {
+        <<< "waiting for multi" >>>;
+        multiEvent => now; //wait for events to arrive.
+        while( multiEvent.nextMsg() != 0 ) {
+            <<< "Got Multi" >>>;
+            multiEvent.getFloat() * 127 => float f1;
+            multiEvent.getFloat() * 127 => float f2;
+            <<< (f1,f2) >>>;
+            if (count < 40) {
+                spork ~ simpledrone(f1 $ int, (20+f2*500) $ int);
+                2::ms => now;
+            } else {
+                <<< "TOO MUCH!" >>>;
+                2::ms => now;
+            }
+        }
+    }
+}
+
+function void multiRange(OscEvent multiEvent) {
+    while ( true ) {
+        <<< "waiting for multi" >>>;
+        multiEvent => now; //wait for events to arrive.
+        while( multiEvent.nextMsg() != 0 ) {
+            <<< "Got Multi" >>>;
+            multiEvent.getFloat() * 127 => float f1;
+            multiEvent.getFloat() * 127 => float f2;
+            //<<< (f1,f2) >>>;
+            1.0 + 0.25*(f1-64)/64 => s1m;
+            1.0 + 0.25*(f2-64)/64 => s3m;
+            <<< (s1m,s3m) >>>;
+            2::ms => now;
+        }
+    }
+}
+
+
+orec.event("/mixer/fourch, f, f, f, f") @=> OscEvent fourchEvent;
+spork ~ fourch(fourchEvent);
+orec.event("/multi/1, f, f") @=> OscEvent multiEvent;
+spork ~  multiPitchLength(multiEvent);
+orec.event("/multi/2, f, f") @=> OscEvent multiEvent2;
+spork ~  multiRange(multiEvent2);
+
+
+while( true ) {
+    10000::ms => now;
+    <<< "sleeping" >>>;
+}
+
