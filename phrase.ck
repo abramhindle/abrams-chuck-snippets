@@ -63,3 +63,6 @@ while( m > 0) {
     }
 }
 <<<" phrsae done">>>;
+//<<<"done">>>;
+//// WARNING INFINITE LOOP
+//Machine.add("phrase.ck");

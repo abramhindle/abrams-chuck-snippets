@@ -10,7 +10,7 @@ sleeps.cap() => int nsleep;
 Math.random2(1,10) => float diff;
 20 + Math.random2(1,20) => float base;
 Math.random2f(0.01,9)  => float step;
-Math.random2(10,1000) => int t;
+Math.random2(10,30) => int t;
 <<<t>>>;
 <<<base>>>;
 while (t > 0) {
@@ -28,3 +28,4 @@ while (t > 0) {
     sleepiter + 1 => sleepiter;
 }
 <<<"done">>>;
+Machine.add("flutter.ck");
