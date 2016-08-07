@@ -33,7 +33,7 @@ Math.random2f(600,700) => float minfreq;
      "bbb" , "ddd" , "jjj",  "ggg", 
      "vvv" , "zzz" , "thz",  "zhh" ] @=> string consonants[];
 
-OscRecv orec;
+OscRecv orec;1
 10000 => orec.port;
 orec.listen();
 
@@ -94,6 +94,44 @@ for (0 => int i; i < 32; i + 1 => i) {
     <<<i,j>>>;
     spork ~ setpitch("/multi/"+j,Std.mtof(96-2*i));    
 }
+
+
+fun void pitcher() {
+    orec.event("/noteon, i") @=> OscEvent ex;
+    float y;
+    while ( true ) {
+        ex => now;
+        while ( ex.nextMsg() != 0 ) {
+            //0.5 => voc.gain;
+            Std.mtof((64-(ex.getInt())) + 32) => y;
+            if ( y > 0 ) {
+                <<< ("/noteon",y) >>>;
+                y => voc.freq;
+            }
+        }
+        10::ms => now;
+    }
+}
+
+fun void changer() {
+    orec.event("/noteoff, i") @=> OscEvent ex;
+    int y;
+    while ( true ) {
+        ex => now;
+        while ( ex.nextMsg() != 0 ) {
+            //0.0 => voc.gain;
+            ex.getInt() => y;
+            voc.freq() / 2.0 => voc.freq;
+            allphones[y % allphones.cap()] => voc.phoneme;
+        }
+        10::ms => now;
+    }
+}
+
+
+
+spork ~ pitcher();
+spork ~ changer();
 
 
 while( true ) {

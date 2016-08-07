@@ -52,17 +52,20 @@ fun void fly(float minf, float maxf, float ibal, float ebal) {
 }
 20 => float minf;
 10000 => float maxf;
-[40.0,40.0,80.0,120.0,160.0,120.0,120.0,1000] @=> float mins[];
-[60.0,80.0,120.0,160.0,200.0,240.0,480.0,1000,2000,3000] @=> float maxes[];
+//[40.0,40.0,80.0,120.0,160.0,120.0,120.0,1000] @=> float mins[];
+//[60.0,80.0,120.0,160.0,200.0,240.0,480.0,1000,2000,3000] @=> float maxes[];
+[500.0,500.0] @=> float mins[];
+[2000.0,3000.0] @=> float maxes[];
+
 0 => int i;
 while(true) {
     mins[i % mins.cap()] => minf;
-    maxes[i % maxes.cap()] => maxf;
+    maxes[i % maxes.cap()]  => maxf;
     //Math.random2f(0.99,1.01) * minf => minf;
     //Math.random2f(0.99,1.01) * maxf => maxf;
     Math.random2f(0,1.0) => float start;
     Math.random2f(0,1.0) => float end;
-    Math.random2f(20,180)::ms => now;
+    Math.random2f(50,250)::ms => now;
     spork ~ fly(minf,maxf, start, end);
     i + 1 => i;
 }
